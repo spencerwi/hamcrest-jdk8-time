@@ -1,8 +1,11 @@
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'maven'
+apply plugin: 'signing'
 
 sourceCompatibility = 1.8
-version = '1.0'
+version = '0.2'
+group = 'com.spencerwi'
 
 repositories {
     mavenCentral()
@@ -16,5 +19,67 @@ dependencies {
 idea {
     module {
         downloadSources = true;
+    }
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc){
+    from 'build/docs/javadoc'
+    classifier = 'javadoc'
+}
+
+task sourcesJar(type: Jar){
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+artifacts {
+    archives jar
+
+    archives javadocJar
+    archives sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/services/local/staging/deploy/maven2/"){
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
+
+            pom.project {
+                name 'Hamcrest-JDK8-Time'
+                packaging 'jar'
+                description "Hamcrest matchers for Java 8's new java.time classes."
+                url "http://github.com/spencerwi/hamcrest-jdk8-time"
+
+                scm {
+                    url 'scm:git@github.com:spencerwi/hamcrest-jdk8-time.git'
+                    connection 'scm:git@github.com:spencerwi/hamcrest-jdk8-time.git'
+                    developerConnection 'scm:git@github.com:spencerwi/hamcrest-jdk8-time.git'
+                }
+
+                licenses {
+                    license {
+                        name 'The MIT License (MIT)'
+                        url 'https://raw.githubusercontent.com/spencerwi/hamcrest-jdk8-time/master/LICENSE'
+                        distribution 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'spencerwi'
+                        name 'Spencer Williams'
+                    }
+                }
+
+            }
+        }
     }
 }
