@@ -1,11 +1,11 @@
-package com.spencerwi.hamcrestJDK8Time;
+package com.spencerwi.hamcrestJDK8Time.localdatetime;
 
 import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.time.Month;
 
-import static com.spencerwi.hamcrestJDK8Time.IsBetweenLocalDateTime.between;
+import static com.spencerwi.hamcrestJDK8Time.localdatetime.IsBetweenLocalDateTime.between;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;

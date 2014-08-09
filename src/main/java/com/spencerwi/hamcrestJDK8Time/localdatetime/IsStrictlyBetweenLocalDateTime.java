@@ -1,4 +1,4 @@
-package com.spencerwi.hamcrestJDK8Time;
+package com.spencerwi.hamcrestJDK8Time.localdatetime;
 
 import org.hamcrest.Description;
 import org.hamcrest.Factory;
