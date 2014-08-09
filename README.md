@@ -1,7 +1,9 @@
 hamcrest-jdk8-time
 ==================
 
-Hamcrest matchers for Java 8's new java.time classes
+Hamcrest matchers for Java 8's new java.time classes.
+
+[![Build Status](https://travis-ci.org/spencerwi/hamcrest-jdk8-time.svg?branch=master)](https://travis-ci.org/spencerwi/hamcrest-jdk8-time)
 
 Included matchers
 -----------------
