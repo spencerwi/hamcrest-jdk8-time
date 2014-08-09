@@ -6,7 +6,7 @@ Hamcrest matchers for Java 8's new java.time classes
 Included matchers
 -----------------
 
-### `between(LocalDateTime start, LocalDateTime end)`
+#### `between(LocalDateTime start, LocalDateTime end)`
 
 Matches if a LocalDateTime is between two other LocalDateTimes, **inclusively**.
 
@@ -24,7 +24,7 @@ assertThat(strictlyBetween, is(between(start, end)));
 assertThat(equalToEnd,      is(between(start, end)));
 ```
 
-### `strictlyBetween(LocalDateTime start, LocalDateTime end)`
+#### `strictlyBetween(LocalDateTime start, LocalDateTime end)`
 
 Matches if a LocalDateTime is **strictly** between two other LocalDateTimes.
 
