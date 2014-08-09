@@ -1,8 +1,9 @@
 apply plugin: 'java'
 apply plugin: 'idea'
+/*
 apply plugin: 'maven'
 apply plugin: 'signing'
-
+*/
 sourceCompatibility = 1.8
 version = '0.2'
 group = 'com.spencerwi'
@@ -21,7 +22,7 @@ idea {
         downloadSources = true;
     }
 }
-
+/*
 task javadocJar(type: Jar, dependsOn: javadoc){
     from 'build/docs/javadoc'
     classifier = 'javadoc'
@@ -83,3 +84,4 @@ uploadArchives {
         }
     }
 }
+*/
