@@ -6,11 +6,11 @@ import java.time.LocalDateTime;
 import java.time.Month;
 
 import static com.spencerwi.hamcrestJDK8Time.localdatetime.IsAfterLocalDateTime.after;
-import static junit.framework.Assert.fail;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNot.not;
+import static org.junit.Assert.fail;
 
 public class IsAfterLocalDateTimeTest {
     @Test
