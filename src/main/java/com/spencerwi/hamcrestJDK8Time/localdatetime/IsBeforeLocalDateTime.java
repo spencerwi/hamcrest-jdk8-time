@@ -9,14 +9,10 @@ import java.time.LocalDateTime;
 public class IsBeforeLocalDateTime extends TypeSafeMatcher<LocalDateTime>{
     private LocalDateTime other;
 
-    public IsBeforeLocalDateTime(LocalDateTime other) {
-        this.other = other;
-    }
+    public IsBeforeLocalDateTime(LocalDateTime other) { this.other = other; }
 
     @Override
-    protected boolean matchesSafely(LocalDateTime item) {
-        return item.isBefore(other);
-    }
+    protected boolean matchesSafely(LocalDateTime item) { return item.isBefore(other); }
 
     @Override
     public void describeTo(Description description) {
@@ -26,7 +22,5 @@ public class IsBeforeLocalDateTime extends TypeSafeMatcher<LocalDateTime>{
     }
 
     @Factory
-    public static IsBeforeLocalDateTime before(LocalDateTime end){
-        return new IsBeforeLocalDateTime(end);
-    }
+    public static IsBeforeLocalDateTime before(LocalDateTime end){ return new IsBeforeLocalDateTime(end); }
 }

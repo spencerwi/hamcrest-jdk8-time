@@ -16,9 +16,7 @@ public class IsStrictlyBetweenLocalDateTime extends TypeSafeMatcher<LocalDateTim
     }
 
     @Override
-    protected boolean matchesSafely(LocalDateTime item) {
-        return (item.isAfter(start) && item.isBefore(end));
-    }
+    protected boolean matchesSafely(LocalDateTime item) { return (item.isAfter(start) && item.isBefore(end)); }
 
     @Override
     public void describeTo(Description description) {

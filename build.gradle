@@ -5,7 +5,7 @@ apply plugin: 'maven'
 apply plugin: 'signing'
 */
 sourceCompatibility = 1.8
-version = '0.2'
+version = '0.3'
 group = 'com.spencerwi'
 
 repositories {

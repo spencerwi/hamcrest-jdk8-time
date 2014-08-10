@@ -8,11 +8,11 @@ Hamcrest matchers for Java 8's new java.time classes.
 Included matchers
 -----------------
 
-### LocalDateTime matchers
+### Common matchers (defined for LocalDateTime, DateTime, and ZonedDateTime)
 
-#### `between(LocalDateTime start, LocalDateTime end)`
+#### `between(start, end)`
 
-Matches if a LocalDateTime is between two other LocalDateTimes, **inclusively**.
+Matches if a date/time is between two other dates/times, **inclusively**.
 
 For example:
 
@@ -28,9 +28,9 @@ assertThat(strictlyBetween, is(between(start, end)));
 assertThat(equalToEnd,      is(between(start, end)));
 ```
 
-#### `strictlyBetween(LocalDateTime start, LocalDateTime end)`
+#### `strictlyBetween(start, end)`
 
-Matches if a LocalDateTime is **strictly** between two other LocalDateTimes.
+Matches if a date/time is **strictly** between two other dates/times.
 
 For example:
 
@@ -46,9 +46,9 @@ assertThat(strictlyBetween, is(between(start, end)));
 assertThat(equalToEnd,      is(not(between(start, end))));
 ```
 
-#### `before(LocalDateTime other)`
+#### `before(other)`
 
-Matches if a LocalDateTime is **strictly** before another LocalDateTime.
+Matches if a date/time is **strictly** before another date/time.
 
 For example:
 
@@ -61,9 +61,9 @@ assertThat(startOfYear, is(before(endOfYear)));
 assertThat(startOfYear, is(not(before(alsoStartOfYear))));
 ```
 
-#### `after(LocalDateTime other)`
+#### `after(other)`
 
-Matches if a LocalDateTime is **strictly** after another LocalDateTime.
+Matches if a date/time is **strictly** after another date/time.
 
 For example:
 

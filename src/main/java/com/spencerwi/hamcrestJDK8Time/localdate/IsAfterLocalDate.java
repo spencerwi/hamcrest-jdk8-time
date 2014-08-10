@@ -9,14 +9,10 @@ import java.time.LocalDate;
 public class IsAfterLocalDate extends TypeSafeMatcher<LocalDate>{
     private LocalDate other;
 
-    public IsAfterLocalDate(LocalDate other) {
-        this.other = other;
-    }
+    public IsAfterLocalDate(LocalDate other) { this.other = other; }
 
     @Override
-    protected boolean matchesSafely(LocalDate item) {
-        return item.isAfter(other);
-    }
+    protected boolean matchesSafely(LocalDate item) { return item.isAfter(other); }
 
     @Override
     public void describeTo(Description description) {
@@ -26,7 +22,5 @@ public class IsAfterLocalDate extends TypeSafeMatcher<LocalDate>{
     }
 
     @Factory
-    public static IsAfterLocalDate after(LocalDate end){
-        return new IsAfterLocalDate(end);
-    }
+    public static IsAfterLocalDate after(LocalDate end){ return new IsAfterLocalDate(end); }
 }
