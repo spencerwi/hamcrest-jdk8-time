@@ -41,9 +41,9 @@ LocalDateTime start = LocalDateTime.of(2014, Month.JANUARY, 1, 0, 0, 0, 0),
          equalToEnd = LocalDateTime.of(2014, Month.DECEMBER, 31, 23, 59, 59, 99),
                 end = LocalDateTime.of(2014, Month.DECEMBER, 31, 23, 59, 59, 99);
 
-assertThat(equalToStart,    is(not(between(start, end))));
-assertThat(strictlyBetween, is(between(start, end)));
-assertThat(equalToEnd,      is(not(between(start, end))));
+assertThat(equalToStart,    is(not(strictlyBetween(start, end))));
+assertThat(strictlyBetween, is(strictlyBetween(start, end)));
+assertThat(equalToEnd,      is(not(strictlyBetween(start, end))));
 ```
 
 #### `before(other)`
