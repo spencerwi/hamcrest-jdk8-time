@@ -1,3 +1,7 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
+env:
+  global:
+  - secure: Az6CVjZGE4B+rR0dT42cqoh608Fp4Wo5oulUofhQTeAvzZyYVNBUe9Sh7br7hEr62eY1KlTqfM9DuirJFVRIkVSxYqUuxSOPt38sIGWuSf8YkUQF+ke/ZIFamDEA8wO6ZbK+NIbZdaWKbylcQ3KUqsRc3N3Y7bMXdDSvitBo/Dg=
+  - secure: HOUWzcqVHT83AuLM2Vvle240HXqkb3P3M/2svsf7G1/ultp+zfJFKAEKk2N9D3xxgBdBe5cBD1j/1EWFyrhZGnicY8CX2BTM/AXetPcDjC8h945XwcApSqRkTKIxPXOPqCfXwMgAls5rzXBeN9XWnb+G9ZinSKe3QaQnGRZlBos=
