@@ -75,3 +75,34 @@ LocalDateTime startOfYear = LocalDateTime.of(2014, Month.JANUARY, 1, 0, 0, 0, 0)
 assertThat(endOfYear, is(after(startOfYear)));
 assertThat(endOfYear, is(not(after(alsoEndOfYear))));
 ```
+
+How to get it
+-------------
+
+These matchers are available from the [Maven Central Repository](http://search.maven.org/#search%7Cga%7C1%7Cg%3Acom.spencerwi%20a%3A%22hamcrest-jdk8-time%22), so your favorite build tool should be able to pull them down.
+
+Using Gradle:
+
+```groovy
+dependencies {
+       ...
+       testCompile group: 'com.spencerwi', name: 'hamcrest-jdk8-time'
+       ...
+}
+```
+
+Using Maven:
+
+```xml
+<dependency>
+       <groupId>com.spencerwi</groupId>
+       <artifactId>hamcrest-jdk8-time</artifactId>
+       <scope>test</scope>
+</dependency
+```
+
+Using SBT (Scala Build Tool):
+
+```scala
+libraryDependencies += "com.spencerwi" % "hamcrest-jdk8-time"
+```
