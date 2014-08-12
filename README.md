@@ -98,7 +98,7 @@ Using Maven:
        <groupId>com.spencerwi</groupId>
        <artifactId>hamcrest-jdk8-time</artifactId>
        <scope>test</scope>
-</dependency
+</dependency>
 ```
 
 Using SBT (Scala Build Tool):
