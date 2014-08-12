@@ -40,47 +40,49 @@ artifacts {
     archives sourcesJar
 }
 
-signing {
-    sign configurations.archives
-}
+if (project.hasProperty('isTravis') == false){
+    signing {
+        sign configurations.archives
+    }
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-            repository(url: "https://oss.sonatype.org/services/local/staging/deploy/maven2/"){
-                authentication(userName: sonatypeUsername, password: sonatypePassword)
-            }
-
-            pom.project {
-                name 'Hamcrest-JDK8-Time'
-                packaging 'jar'
-                description "Hamcrest matchers for Java 8's new java.time classes."
-                url "http://github.com/spencerwi/hamcrest-jdk8-time"
-
-                scm {
-                    url 'scm:git@github.com:spencerwi/hamcrest-jdk8-time.git'
-                    connection 'scm:git@github.com:spencerwi/hamcrest-jdk8-time.git'
-                    developerConnection 'scm:git@github.com:spencerwi/hamcrest-jdk8-time.git'
+                repository(url: "https://oss.sonatype.org/services/local/staging/deploy/maven2/"){
+                    authentication(userName: sonatypeUsername, password: sonatypePassword)
                 }
 
-                licenses {
-                    license {
-                        name 'The MIT License (MIT)'
-                        url 'https://raw.githubusercontent.com/spencerwi/hamcrest-jdk8-time/master/LICENSE'
-                        distribution 'repo'
+                pom.project {
+                    name 'Hamcrest-JDK8-Time'
+                    packaging 'jar'
+                    description "Hamcrest matchers for Java 8's new java.time classes."
+                    url "http://github.com/spencerwi/hamcrest-jdk8-time"
+
+                    scm {
+                        url 'scm:git@github.com:spencerwi/hamcrest-jdk8-time.git'
+                        connection 'scm:git@github.com:spencerwi/hamcrest-jdk8-time.git'
+                        developerConnection 'scm:git@github.com:spencerwi/hamcrest-jdk8-time.git'
                     }
-                }
 
-                developers {
-                    developer {
-                        id 'spencerwi'
-                        name 'Spencer Williams'
+                    licenses {
+                        license {
+                            name 'The MIT License (MIT)'
+                            url 'https://raw.githubusercontent.com/spencerwi/hamcrest-jdk8-time/master/LICENSE'
+                            distribution 'repo'
+                        }
                     }
-                }
 
+                    developers {
+                        developer {
+                            id 'spencerwi'
+                            name 'Spencer Williams'
+                        }
+                    }
+
+                }
             }
         }
     }
 }
+
