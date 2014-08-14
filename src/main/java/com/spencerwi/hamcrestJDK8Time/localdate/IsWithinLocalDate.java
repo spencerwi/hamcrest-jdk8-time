@@ -47,7 +47,7 @@ public class IsWithinLocalDate extends TypeSafeMatcher<LocalDate> {
         private long window;
         private TemporalUnit units;
 
-        public Builder(long window, TemporalUnit units) {
+        private Builder(long window, TemporalUnit units) {
             this.window = window;
             this.units = units;
         }
