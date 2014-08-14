@@ -76,6 +76,37 @@ assertThat(endOfYear, is(after(startOfYear)));
 assertThat(endOfYear, is(not(after(alsoEndOfYear))));
 ```
 
+#### `within(window, units).of(other)`
+
+Matches if a date/time is within X `TemporalUnits` of another date/time.
+
+For example:
+
+```java
+ZonedDateTime now = ZonedDateTime.now(),
+        yesterday = ZonedDateTime.now().minusDays(1),
+         tomorrow = ZonedDateTime.now().plusDays(1),
+    twoMinutesAgo = ZonedDateTime.now().minusMinutes(2),
+twoMinutesFromNow = ZonedDateTime.now().plusMinutes(2);
+
+assertThat(yesterday, is(within(2, ChronoUnits.DAYS).of(now)));
+assertThat(tomorrow,  is(within(2, ChronoUnits.DAYS).of(now)));
+
+assertThat(twoMinutesAgo,     is(within(5, ChronoUnits.MINUTES).of(now)));
+assertThat(twoMinutesFromNow, is(within(5, ChronoUnits.MINUTES).of(now)));
+```
+
+**Be careful when using this with LocalDate!** You can't use time-based TemporalUnits with LocalDates.
+
+This will throw an `UnsupportedTemporalTypeException`:
+
+```java
+LocalDate today = LocalDate.now();
+LocalDate yesterday = LocalDate.now().minusDays(1);
+
+assertThat(yesterday, is(within(2, HOURS).of(today)));
+```
+
 How to get it
 -------------
 
