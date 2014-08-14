@@ -117,7 +117,7 @@ Using Gradle:
 ```groovy
 dependencies {
        ...
-       testCompile group: 'com.spencerwi', name: 'hamcrest-jdk8-time'
+       testCompile group: 'com.spencerwi', name: 'hamcrest-jdk8-time', version: '0.4'
        ...
 }
 ```
@@ -135,5 +135,5 @@ Using Maven:
 Using SBT (Scala Build Tool):
 
 ```scala
-libraryDependencies += "com.spencerwi" % "hamcrest-jdk8-time"
+libraryDependencies += "com.spencerwi" % "hamcrest-jdk8-time" % "0.4"
 ```
