@@ -1,33 +1,34 @@
-package com.spencerwi.hamcrestJDK8Time.zoneddatetime;
+package com.spencerwi.hamcrestJDK8Time.matchers;
 
 import org.junit.Test;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import static com.spencerwi.hamcrestJDK8Time.zoneddatetime.IsBetweenZonedDateTime.between;
+import static com.spencerwi.hamcrestJDK8Time.matchers.IsStrictlyBetween.strictlyBetween;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNot.not;
 
-public class IsBetweenZonedDateTimeTest {
+public class IsStrictlyBetweenZonedDateTimeTest {
+
     @Test
-    public void matchesIfEqualToStart(){
+    public void doesNotMatchIfEqualToStart(){
         ZonedDateTime start = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
                  timeToTest = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
                         end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
 
-        assertThat(timeToTest, is(between(start, end)));
+        assertThat(timeToTest, is(not(strictlyBetween(start, end))));
     }
 
     @Test
-    public void matchesIfEqualToEnd(){
+    public void doesNotMatchIfEqualToEnd(){
         ZonedDateTime start = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
                  timeToTest = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault()),
                         end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
 
-        assertThat(timeToTest, is(between(start, end)));
+        assertThat(timeToTest, is(not(strictlyBetween(start, end))));
     }
 
     @Test
@@ -36,7 +37,7 @@ public class IsBetweenZonedDateTimeTest {
                  timeToTest = ZonedDateTime.of(2014, 6, 30, 0, 0, 0, 0, ZoneId.systemDefault()),
                         end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
 
-        assertThat(timeToTest, is(between(start, end)));
+        assertThat(timeToTest, is(strictlyBetween(start, end)));
     }
 
     @Test
@@ -45,7 +46,7 @@ public class IsBetweenZonedDateTimeTest {
                  timeToTest = ZonedDateTime.of(1970, 6, 30, 0, 0, 0, 0, ZoneId.systemDefault()),
                         end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
 
-        assertThat(timeToTest, is(not(between(start, end))));
+        assertThat(timeToTest, is(not(strictlyBetween(start, end))));
     }
 
     @Test
@@ -56,9 +57,9 @@ public class IsBetweenZonedDateTimeTest {
 
 
         try {
-            assertThat(timeToTest, is(between(start, end))); /* Should fail, throwing AssertionError */
+            assertThat(timeToTest, is(strictlyBetween(start, end))); /* Should fail, throwing AssertionError */
         } catch(AssertionError e){
-            assertThat(e.getMessage(), containsString("Expected: is a ZonedDateTime between <" + start.toString() + "> and <" + end.toString() + ">, inclusively"));
+            assertThat(e.getMessage(), containsString("Expected: is a ZonedDateTime strictly between <" + start.toString() + "> and <" + end.toString() + ">"));
         }
     }
 }

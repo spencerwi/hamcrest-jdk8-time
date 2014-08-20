@@ -1,24 +1,24 @@
-package com.spencerwi.hamcrestJDK8Time.zoneddatetime;
+package com.spencerwi.hamcrestJDK8Time.matchers;
 
 import org.junit.Test;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import static com.spencerwi.hamcrestJDK8Time.zoneddatetime.IsAfterZonedDateTime.after;
+import static com.spencerwi.hamcrestJDK8Time.matchers.IsBefore.before;
+import static junit.framework.Assert.fail;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNot.not;
-import static org.junit.Assert.fail;
 
-public class IsAfterZonedDateTimeTest {
+public class IsBeforeZonedDateTimeTest {
     @Test
-    public void doesNotMatchIfBeforeEnd(){
+    public void matchesIfBeforeEnd(){
         ZonedDateTime startOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
                         endOfYear = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
 
-        assertThat(startOfYear, is(not(after(endOfYear))));
+        assertThat(startOfYear, is(before(endOfYear)));
     }
 
     @Test
@@ -26,15 +26,15 @@ public class IsAfterZonedDateTimeTest {
         ZonedDateTime startOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
                   alsoStartOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault());
 
-        assertThat(startOfYear, is(not(after(alsoStartOfYear))));
+        assertThat(startOfYear, is(not(before(alsoStartOfYear))));
     }
 
     @Test
-    public void matchesIfAfterEnd(){
+    public void doesNotMatchIfAfterEnd(){
         ZonedDateTime startOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
                         endOfYear = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
 
-        assertThat(endOfYear, is(after(startOfYear)));
+        assertThat(endOfYear, is(not(before(startOfYear))));
     }
 
     @Test
@@ -43,10 +43,10 @@ public class IsAfterZonedDateTimeTest {
                         endOfYear = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
 
         try {
-            assertThat(startOfYear, is(after(endOfYear)));
+            assertThat(endOfYear, is(before(startOfYear)));
             fail("should have thrown an assertionError because of the intentionally-false assertion");
         } catch (AssertionError e){
-            assertThat(e.getMessage(), containsString("Expected: is a ZonedDateTime that is after <" + endOfYear.toString() + ">"));
+            assertThat(e.getMessage(), containsString("Expected: is a ZonedDateTime that is before <" + startOfYear.toString() + ">"));
         }
     }
 }

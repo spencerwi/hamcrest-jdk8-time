@@ -1,4 +1,4 @@
-package com.spencerwi.hamcrestJDK8Time.zoneddatetime;
+package com.spencerwi.hamcrestJDK8Time.matchers.iswithin;
 
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;

@@ -1,11 +1,11 @@
-package com.spencerwi.hamcrestJDK8Time.localdate;
+package com.spencerwi.hamcrestJDK8Time.matchers;
 
 import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.Month;
 
-import static com.spencerwi.hamcrestJDK8Time.localdate.IsBeforeLocalDate.before;
+import static com.spencerwi.hamcrestJDK8Time.matchers.IsBefore.before;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
