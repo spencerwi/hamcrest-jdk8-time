@@ -8,7 +8,8 @@ Hamcrest matchers for Java 8's new java.time classes.
 Included matchers
 -----------------
 
-### Common matchers (defined for everything that implements `Temporal` and `Comparable<T>`)
+All matchers are defined for everything that implements `Temporal` and `Comparable<T>`.
+
 
 #### `between(start, end)`
 
@@ -76,9 +77,7 @@ assertThat(endOfYear, is(after(startOfYear)));
 assertThat(endOfYear, is(not(after(alsoEndOfYear))));
 ```
 
-### Class-specific matchers
-
-#### `within(window, units).of(other)` (implemented for LocalDate, LocalDateTime, and ZonedDateTime)
+#### `within(window, units).of(other)` 
 
 Matches if a date/time is within X `TemporalUnits` of another date/time.
 
@@ -119,7 +118,7 @@ Using Gradle:
 ```groovy
 dependencies {
        ...
-       testCompile group: 'com.spencerwi', name: 'hamcrest-jdk8-time', version: '0.5'
+       testCompile group: 'com.spencerwi', name: 'hamcrest-jdk8-time', version: '0.6'
        ...
 }
 ```
@@ -137,5 +136,5 @@ Using Maven:
 Using SBT (Scala Build Tool):
 
 ```scala
-libraryDependencies += "com.spencerwi" % "hamcrest-jdk8-time" % "0.5"
+libraryDependencies += "com.spencerwi" % "hamcrest-jdk8-time" % "0.6"
 ```

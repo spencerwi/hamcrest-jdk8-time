@@ -1,11 +1,11 @@
-package com.spencerwi.hamcrestJDK8Time.matchers.iswithin;
+package com.spencerwi.hamcrestJDK8Time.matchers;
 
 import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.temporal.UnsupportedTemporalTypeException;
 
-import static com.spencerwi.hamcrestJDK8Time.matchers.iswithin.IsWithinLocalDate.within;
+import static com.spencerwi.hamcrestJDK8Time.matchers.IsWithin.within;
 import static java.time.temporal.ChronoUnit.DAYS;
 import static java.time.temporal.ChronoUnit.HOURS;
 import static org.hamcrest.CoreMatchers.containsString;
