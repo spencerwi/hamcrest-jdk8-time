@@ -15,32 +15,32 @@ import static org.junit.Assert.fail;
 public class IsAfterZonedDateTimeTest {
     @Test
     public void doesNotMatchIfBeforeEnd(){
-        ZonedDateTime startOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
-                        endOfYear = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
+        ZonedDateTime startOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.of("Z")),
+                        endOfYear = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.of("Z"));
 
         assertThat(startOfYear, is(not(after(endOfYear))));
     }
 
     @Test
     public void doesNotMatchIfEqualToEnd(){
-        ZonedDateTime startOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
-                  alsoStartOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault());
+        ZonedDateTime startOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.of("Z")),
+                  alsoStartOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.of("Z"));
 
         assertThat(startOfYear, is(not(after(alsoStartOfYear))));
     }
 
     @Test
     public void matchesIfAfterEnd(){
-        ZonedDateTime startOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
-                        endOfYear = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
+        ZonedDateTime startOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.of("Z")),
+                        endOfYear = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.of("Z"));
 
         assertThat(endOfYear, is(after(startOfYear)));
     }
 
     @Test
     public void describesItselfCorrectly(){
-        ZonedDateTime startOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
-                        endOfYear = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
+        ZonedDateTime startOfYear = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.of("Z")),
+                        endOfYear = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.of("Z"));
 
         try {
             assertThat(startOfYear, is(after(endOfYear)));

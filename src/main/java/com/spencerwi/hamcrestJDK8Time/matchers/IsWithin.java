@@ -37,10 +37,9 @@ public class IsWithin<T extends Temporal & Comparable<? super T>> extends TypeSa
                 .appendValue(other);
     }
 
-    public static RequiredOther within(long window, TemporalUnit units){ return new Builder(window, units); }
+    public static Builder within(long window, TemporalUnit units){ return new Builder(window, units); }
 
-    public interface RequiredOther { <T extends Temporal & Comparable<? super T>> IsWithin<T> of(T other);}
-    public static class Builder implements RequiredOther {
+    public static class Builder {
         private long window;
         private TemporalUnit units;
 
@@ -49,7 +48,6 @@ public class IsWithin<T extends Temporal & Comparable<? super T>> extends TypeSa
             this.units = units;
         }
 
-        @Override
         public <T extends Temporal & Comparable<? super T>> IsWithin<T> of(T other) { return new IsWithin<>(window, units, other); }
     }
 

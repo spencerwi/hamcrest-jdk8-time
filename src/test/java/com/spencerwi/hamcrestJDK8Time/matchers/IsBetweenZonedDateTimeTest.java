@@ -14,45 +14,45 @@ import static org.hamcrest.core.IsNot.not;
 public class IsBetweenZonedDateTimeTest {
     @Test
     public void matchesIfEqualToStart(){
-        ZonedDateTime start = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
-                 timeToTest = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
-                        end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
+        ZonedDateTime start = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.of("Z")),
+                 timeToTest = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.of("Z")),
+                        end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.of("Z"));
 
         assertThat(timeToTest, is(between(start, end)));
     }
 
     @Test
     public void matchesIfEqualToEnd(){
-        ZonedDateTime start = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
-                 timeToTest = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault()),
-                        end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
+        ZonedDateTime start = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.of("Z")),
+                 timeToTest = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.of("Z")),
+                        end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.of("Z"));
 
         assertThat(timeToTest, is(between(start, end)));
     }
 
     @Test
     public void matchesIfStrictlyBetweenStartAndEnd(){
-        ZonedDateTime start = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
-                 timeToTest = ZonedDateTime.of(2014, 6, 30, 0, 0, 0, 0, ZoneId.systemDefault()),
-                        end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
+        ZonedDateTime start = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.of("Z")),
+                 timeToTest = ZonedDateTime.of(2014, 6, 30, 0, 0, 0, 0, ZoneId.of("Z")),
+                        end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.of("Z"));
 
         assertThat(timeToTest, is(between(start, end)));
     }
 
     @Test
     public void doesNotMatchIfOutsideOfGivenWindow(){
-        ZonedDateTime start = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
-                 timeToTest = ZonedDateTime.of(1970, 6, 30, 0, 0, 0, 0, ZoneId.systemDefault()),
-                        end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
+        ZonedDateTime start = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.of("Z")),
+                 timeToTest = ZonedDateTime.of(1970, 6, 30, 0, 0, 0, 0, ZoneId.of("Z")),
+                        end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.of("Z"));
 
         assertThat(timeToTest, is(not(between(start, end))));
     }
 
     @Test
     public void describesItselfCorrectly(){
-        ZonedDateTime start = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.systemDefault()),
-                 timeToTest = ZonedDateTime.of(1970, 6, 30, 0, 0, 0, 0, ZoneId.systemDefault()),
-                        end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.systemDefault());
+        ZonedDateTime start = ZonedDateTime.of(2014, 1, 1, 0, 0, 0, 0, ZoneId.of("Z")),
+                 timeToTest = ZonedDateTime.of(1970, 6, 30, 0, 0, 0, 0, ZoneId.of("Z")),
+                        end = ZonedDateTime.of(2014, 12, 31, 23, 59, 59, 99, ZoneId.of("Z"));
 
 
         try {

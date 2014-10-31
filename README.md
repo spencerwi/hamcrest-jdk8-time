@@ -108,6 +108,21 @@ LocalDate yesterday = LocalDate.now().minusDays(1);
 assertThat(yesterday, is(within(2, HOURS).of(today)));
 ```
 
+#### `same(field).as(other)`
+
+Matches if a date/time has the same `field` value as `other`.
+
+For example:
+
+```java
+LocalDate januaryFirst1970 = LocalDate.of(1970, 1, 1);
+LocalDate decemberThirtyFirst1970 = LocalDate.of(1970, 12, 30);
+
+assertThat(januaryFirst1970, is(same(ChronoField.YEAR).as(decemberThirtyFirst1970)));
+assertThat(januaryFirst1970, is(not(same(DAY_OF_MONTH).as(decemberThirtyFirst1970))));
+assertThat(januaryFirst1970, is(not(same(MONTH_OF_YEAR).as(decemberThirtyFirst1970))));
+```
+
 How to get it
 -------------
 
